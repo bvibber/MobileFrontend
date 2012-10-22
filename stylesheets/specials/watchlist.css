@@ -1,0 +1,50 @@
+ul.mw-mf-watchlist-selector {
+	text-align: center;
+	background-color: #e0e0e0;
+	padding: 8px 0px;
+	margin-left: -28px;
+	margin-right: -28px;
+}
+ul.mw-mf-watchlist-selector li {
+	display: inline-block;
+	border: solid 1px #444;
+	padding: 0px 8px;
+	
+	color: #808080;
+	background-color: white;
+}
+ul.mw-mf-watchlist-selector li.selected {
+	color: white;
+	background-color: #808080;
+}
+
+
+.mw-mf-watchlist-results {
+	margin-left: -28px;
+	margin-right: -28px;
+}
+
+.mw-mf-watchlist-results li {
+	list-style: none;
+	padding: 8px 0px;
+	border-top: solid 1px #c0c0c0;
+	position: relative;
+	color: #808080;
+	padding-left: 28px;
+	padding-right: 28px;
+	font-size: 80%;
+}
+.mw-mf-watchlist-results li .mw-mf-title {
+	color: #202020;
+	font-size: 125%;
+}
+.mw-mf-watchlist-results li .mw-mf-time {
+	position: absolute;
+	top: 2em;
+	right: 28px;
+}
+.mw-mf-ip {
+	color: white;
+	background: red;
+	padding: 0px 6px;
+}

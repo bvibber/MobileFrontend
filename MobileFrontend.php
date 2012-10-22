@@ -51,6 +51,7 @@ $autoloadClasses = array (
 	'SpecialMobileFeedback' => 'specials/SpecialMobileFeedback',
 	'SpecialMobileOptions' => 'specials/SpecialMobileOptions',
 	'SpecialMobileMenu' => 'specials/SpecialMobileMenu',
+	'SpecialMobileWatchlist' => 'specials/SpecialMobileWatchlist',
 
 	'SkinMobile' => 'skins/SkinMobile',
 	'SkinMobileTemplate' => 'skins/SkinMobileTemplate',
@@ -176,6 +177,13 @@ $wgResourceModules['mobile.references'] = array(
 		'javascripts/common/mf-navigation.js',
 		'javascripts/modules/mf-references.js' ),
 	'raw' => true,
+	'localBasePath' => $localBasePath,
+	'remoteExtPath' => $remoteExtPath,
+	'targets' => 'mobile',
+);
+$wgResourceModules['mobile.watchlist'] = array(
+	'styles' => array( 'stylesheets/specials/watchlist.css' ),
+	'scripts' => array( 'javascripts/specials/watchlist.js' ),
 	'localBasePath' => $localBasePath,
 	'remoteExtPath' => $remoteExtPath,
 	'targets' => 'mobile',

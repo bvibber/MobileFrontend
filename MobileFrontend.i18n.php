@@ -135,6 +135,8 @@ $messages['en'] = array (
 
 	'mobile-frontend-ajax-page-loading' => 'Loading $1',
 	'mobile-frontend-ajax-page-error' => 'Whoops! Something went wrong there. Please try refreshing your browser window.',
+	
+	'mobile-frontend-changeslist-ip' => 'IP',
 );
 
 /** Message documentation (Message documentation)
@@ -271,6 +273,7 @@ This buttons takes the user to a random page.',
 	'mobile-frontend-meta-data-issues' => 'This should be several words and should explain that an article has cleanup templates on it - meaning there is room for improvement on the page. It appears in a button that when clicked opens the overlay with heading {{msg-mw|mobile-frontend-meta-data-issues-header}}',
 	'mobile-frontend-ajax-page-loading' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript',
 	'mobile-frontend-ajax-page-error' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript and it fails',
+	'mobile-frontend-changeslist-ip' => 'Label used in mobile watchlist/history/recentchanges overview for IP (non-logged-in) edits.',
 );
 
 /** Achinese (Acèh)
