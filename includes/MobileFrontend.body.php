@@ -23,6 +23,7 @@ class ExtMobileFrontend extends ContextSource {
 		$wgHooks['ResourceLoaderRegisterModules'][] = array( &$this, 'resourceLoaderRegisterModules' );
 		$wgHooks['ResourceLoaderGetConfigVars'][] = array( &$this, 'resourceLoaderGetConfigVars' );
 		$wgHooks['UserLoginForm'][] = array( &$this, 'renderLogin' );
+		$wgHooks['SpecialPage_initList'][] = array( &$this, 'onSpecialPage_initList' );
 	}
 
 	/**
@@ -549,6 +550,20 @@ class ExtMobileFrontend extends ContextSource {
 		global $wgMFStopRedirectCookieHost, $wgCookiePath;
 		$vars['wgCookiePath'] = $wgCookiePath;
 		$vars['wgMFStopRedirectCookieHost'] = MobileContext::singleton()->getStopMobileRedirectCookieDomain();
+		return true;
+	}
+
+	/**
+	 * Hook for SpecialPage_initList in SpecialPageFactory.
+	 *
+	 * @param array &$list: list of special page classes
+	 * @return boolean hook return value
+	 */
+	public function onSpecialPage_initList( &$list ) {
+		if ( MobileContext::singleton()->shouldDisplayMobileView() ) {
+			// Replace the standard watchlist view with our custom one
+			$list['Watchlist'] = 'SpecialMobileWatchlist';
+		}
 		return true;
 	}
 }

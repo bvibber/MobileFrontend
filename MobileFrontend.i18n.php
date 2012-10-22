@@ -129,6 +129,7 @@ $messages['en'] = array (
 	'mobile-frontend-main-menu-nearby' => 'Nearby',
 	'mobile-frontend-main-menu-login' => 'Log in',
 	'mobile-frontend-main-menu-logout' => 'Log out',
+	'mobile-frontend-main-menu-watchlist' => 'Watchlist',
 	'mobile-frontend-main-menu-settings' => 'Settings',
 	'mobile-frontend-main-menu-settings-heading' => 'Mobile site settings',
 	'mobile-frontend-settings-site-header' => '{{SITENAME}} Languages',
@@ -145,6 +146,13 @@ $messages['en'] = array (
 	'mobile-frontend-ajax-page-loading' => 'Loading $1',
 	'mobile-frontend-page-saving' => 'Saving $1',
 	'mobile-frontend-ajax-page-error' => 'Whoops! Something went wrong there. Please try refreshing your browser window.',
+	
+	'mobile-frontend-changeslist-ip' => 'IP',
+	'mobile-frontend-changeslist-nocomment' => 'no edit summary',
+	'mobile-frontend-watchlist-filter-all' => 'All',
+	'mobile-frontend-watchlist-filter-articles' => 'Articles',
+	'mobile-frontend-watchlist-filter-talk' => 'Talk',
+	'mobile-frontend-watchlist-filter-other' => 'Other',
 );
 
 /** Message documentation (Message documentation)
@@ -271,6 +279,7 @@ This buttons takes the user to a random page.',
 	'mobile-frontend-main-menu-nearby' => 'Nearby link text in main menu',
 	'mobile-frontend-main-menu-login' => 'Text for log in link in main menu',
 	'mobile-frontend-main-menu-logout' => 'Text for logout link in main menu',
+	'mobile-frontend-main-menu-watchlist' => 'Text for watchlist link in main menu',
 	'mobile-frontend-main-menu-settings' => 'Settings link text in main menu',
 	'mobile-frontend-main-menu-settings-heading' => 'Heading for Special:MobileOptions page',
 	'mobile-frontend-settings-site-header' => 'Heading for the Special:MobileOptions/Language page - only visible to non javascript users',
@@ -288,6 +297,13 @@ This buttons takes the user to a random page.',
 	'mobile-frontend-ajax-page-loading' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript',
 	'mobile-frontend-page-saving' => 'Text shown whilst an article is being saved',
 	'mobile-frontend-ajax-page-error' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript and it fails',
+
+	'mobile-frontend-changeslist-ip' => 'Label used in mobile watchlist/history/recentchanges overview for IP (non-logged-in) edits.',
+	'mobile-frontend-changeslist-nocomment' => 'Text to mark an empty edit summary in mobile watchlist/history/recentchanges overview.',
+	'mobile-frontend-watchlist-filter-all' => 'Label on filter selector for mobile watchlist: all pages',
+	'mobile-frontend-watchlist-filter-articles' => 'Label on filter selector for mobile watchlist: all pages: article pages only',
+	'mobile-frontend-watchlist-filter-talk' => 'Label on filter selector for mobile watchlist: talk pages',
+	'mobile-frontend-watchlist-filter-other' => 'Label on filter selector for mobile watchlist: other pages (not talk or article)',
 );
 
 /** Achinese (Acèh)
