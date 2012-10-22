@@ -1,29 +1,24 @@
-#content_wrapper {
-	/* hack for margins */
-	padding: 0;
-	margin: 0;
-}
-
-ul.mw-mf-watchlist-selector {
+#mw-mf-watchlist .mw-mf-watchlist-selector {
 	text-align: center;
-	background-color: #e0e0e0;
 	padding: 8px 0px;
 }
-ul.mw-mf-watchlist-selector li {
+#mw-mf-watchlist .mw-mf-watchlist-selector li {
 	display: inline-block;
 	border: solid 1px #444;
 	padding: 0px 8px;
+	margin: 0;
 	
 	color: #808080;
 	background-color: white;
 }
-ul.mw-mf-watchlist-selector li.selected {
+#mw-mf-watchlist .mw-mf-watchlist-selector li.selected {
 	color: white;
 	background-color: #808080;
 }
 
 
 .mw-mf-watchlist-results {
+	background-color: white;
 }
 
 .mw-mf-watchlist-results li {

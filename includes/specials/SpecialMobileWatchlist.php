@@ -4,6 +4,8 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 	function execute( $par ) {
 		$user = $this->getUser();
 		$output = $this->getOutput();
+		
+		$output->setPageTitle( $this->msg( 'watchlist' ) );
 
 		if( $user->isAnon() ) {
 			// No watchlist for you.
@@ -11,10 +13,19 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 		}
 
 		$output->addModules( 'mobile.watchlist' );
+
+		$output->addHtml(
+			Html::openElement( 'div', array( 'id' => 'mw-mf-watchlist' ) )
+		);
+
 		$this->showHeader();
-		
+
 		$res = $this->doQuery();
 		$this->showResults( $res );
+
+		$output->addHtml(
+			Html::closeElement( 'div' )
+		);
 	}
 
 	function showHeader() {
@@ -74,6 +85,8 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 	}
 
 	function showResults( $res ) {
+		$this->seenTitles = array();
+
 		$output = $this->getOutput();
 		$output->addHtml( '<ul class="mw-mf-watchlist-results">' );
 		foreach( $res as $row ) {
@@ -86,6 +99,13 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 		$output = $this->getOutput();
 
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+		$titleText = $title->getPrefixedText();
+		if ( array_key_exists( $titleText, $this->seenTitles ) ) {
+			// todo: skip seen titles and show only the latest?
+			// return;
+		}
+		$this->seenTitles[$titleText] = true;
+		
 		$comment = $row->rc_comment;
 		$userId = $row->rc_user;
 		$username = $row->rc_user_text;
@@ -112,7 +132,7 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 
 		$output->addHtml(
 			'<li>' .
-			Html::element( 'div', array( 'class' => 'mw-mf-title' ), $title->getPrefixedText() ).
+			Html::element( 'div', array( 'class' => 'mw-mf-title' ), $titleText ).
 			Html::openElement( 'div', array( 'class' => 'mw-mf-user' ) ).
 				$usernameChunk .
 			Html::closeElement( 'div' ) .

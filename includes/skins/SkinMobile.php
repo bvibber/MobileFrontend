@@ -22,7 +22,8 @@ class SkinMobile extends SkinMobileBase {
 		$inBeta = $context->isBetaGroupMember();
 
 		$userLogin = $title->isSpecial( 'Userlogin' );
-		$tpl->set( 'isOverlay', ( $userLogin ) ); // quick hack
+		$watchlist = $title->isSpecial( 'Watchlist' );
+		$tpl->set( 'isOverlay', ( $userLogin || $watchlist ) ); // quick hack
 		$tpl->set( 'isBetaGroupMember', $inBeta );
 		$tpl->set( 'renderLeftMenu', $context->getForceLeftMenu() );
 		$tpl->set( 'pagetitle', $out->getHTMLTitle() );
