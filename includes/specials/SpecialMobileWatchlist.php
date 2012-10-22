@@ -51,6 +51,10 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			),
 		);
 		$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
+		$limitWatchlist = 100; // hack
+		if( $limitWatchlist ) {
+			$options['LIMIT'] = $limitWatchlist;
+		}
 
 		$rollbacker = $user->isAllowed('rollback');
 		if ( $usePage || $rollbacker ) {
