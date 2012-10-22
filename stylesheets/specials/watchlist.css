@@ -1,9 +1,13 @@
+#content_wrapper {
+	/* hack for margins */
+	padding: 0;
+	margin: 0;
+}
+
 ul.mw-mf-watchlist-selector {
 	text-align: center;
 	background-color: #e0e0e0;
 	padding: 8px 0px;
-	margin-left: -28px;
-	margin-right: -28px;
 }
 ul.mw-mf-watchlist-selector li {
 	display: inline-block;
@@ -20,8 +24,6 @@ ul.mw-mf-watchlist-selector li.selected {
 
 
 .mw-mf-watchlist-results {
-	margin-left: -28px;
-	margin-right: -28px;
 }
 
 .mw-mf-watchlist-results li {
