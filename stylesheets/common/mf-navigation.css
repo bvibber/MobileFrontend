@@ -205,6 +205,9 @@ input[type=submit].languageSelector {
 #mw-mf-menu-main li.icon6 a.login {
   background-image: /* @embed */ url(images/menu/login.png);
 }
+#mw-mf-menu-main li.icon-watchlist a {
+  background-image: /* @embed */ url(images/menu/watchlist.png);
+}
 #mw-mf-menu-main li.disabled {
   opacity: 0.2;
 }
