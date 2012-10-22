@@ -137,6 +137,7 @@ $messages['en'] = array (
 	'mobile-frontend-ajax-page-error' => 'Whoops! Something went wrong there. Please try refreshing your browser window.',
 	
 	'mobile-frontend-changeslist-ip' => 'IP',
+	'mobile-frontend-changeslist-nocomment' => 'no edit summary',
 );
 
 /** Message documentation (Message documentation)
@@ -274,6 +275,7 @@ This buttons takes the user to a random page.',
 	'mobile-frontend-ajax-page-loading' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript',
 	'mobile-frontend-ajax-page-error' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript and it fails',
 	'mobile-frontend-changeslist-ip' => 'Label used in mobile watchlist/history/recentchanges overview for IP (non-logged-in) edits.',
+	'mobile-frontend-changeslist-nocomment' => 'Text to mark an empty edit summary in mobile watchlist/history/recentchanges overview.',
 );
 
 /** Achinese (Acèh)

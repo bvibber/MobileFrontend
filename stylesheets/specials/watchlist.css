@@ -32,15 +32,22 @@ ul.mw-mf-watchlist-selector li.selected {
 	color: #808080;
 	padding-left: 28px;
 	padding-right: 28px;
+}
+.mw-mf-watchlist-results li div {
 	font-size: 80%;
+
+	white-space: nowrap;
+	-webkit-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 .mw-mf-watchlist-results li .mw-mf-title {
 	color: #202020;
-	font-size: 125%;
+	font-size: 100%;
 }
 .mw-mf-watchlist-results li .mw-mf-time {
 	position: absolute;
-	top: 2em;
+	top: 2.5em;
 	right: 28px;
 }
 .mw-mf-ip {

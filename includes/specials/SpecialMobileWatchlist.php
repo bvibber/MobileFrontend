@@ -98,6 +98,14 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			$usernameChunk = htmlspecialchars( $username );
 		}
 
+		if ( $comment === '' ) {
+			$comment = $this->msg( 'mobile-frontend-changeslist-nocomment' )->plain();
+		} else {
+			$comment = Linker::formatComment( $comment, $title );
+			// flatten back to text
+			$comment = Sanitizer::stripAllTags( $comment );
+		}
+
 		$output->addHtml(
 			'<li>' .
 			Html::element( 'div', array( 'class' => 'mw-mf-title' ), $title->getPrefixedText() ).
