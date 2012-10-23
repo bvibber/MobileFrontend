@@ -39,6 +39,9 @@
 }
 .mw-mf-watchlist-results li.date {
 	background: none;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: #f0f0f0;
 }
 
 .mw-mf-watchlist-results li div {
@@ -55,7 +58,7 @@
 }
 .mw-mf-watchlist-results li .mw-mf-time {
 	position: absolute;
-	top: 2.5em;
+	top: 3em;
 	right: 28px;
 }
 .mw-mf-ip {
