@@ -1,3 +1,11 @@
+#mw-mf-watchlist {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
 #mw-mf-watchlist .mw-mf-watchlist-selector {
 	text-align: center;
 	padding: 8px 0px;
