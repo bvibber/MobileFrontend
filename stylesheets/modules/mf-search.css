@@ -3,6 +3,16 @@
 moved from beta_common.css in
 Change-Id: Id7715a83f8dc42cbdb23d8cbf982801606236f7c
 */
+html.page-loading input.searchSubmit,
+html.jsSearch input.searchSubmit {
+  display: none;
+}
+input.searchSubmit {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  height: 26px;
+}
 input.search {
   -webkit-appearance: none;
   line-height: normal;
@@ -55,6 +65,8 @@ input.search.searching {
   background-position: right center;
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: auto 12px;
+  -o-background-size: auto 12px;
   -webkit-background-size: auto 12px;
   background-size: auto 12px;
   cursor: pointer;

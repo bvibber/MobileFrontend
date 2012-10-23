@@ -5,7 +5,7 @@ input[type=submit] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  padding: 0.5em 1.5em 0.5em;
+  padding: 1em 1.5em 1em;
   line-height: 1;
   text-align: center;
   cursor: pointer;
@@ -67,9 +67,11 @@ input[type=submit].languageSelector {
   display: inline-block;
   height: 46px;
   width: 40px;
-  background-image: /* @embed */ url(images/menu/main.png);
+  background-image: url(images/menu/lowres/main.png);
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: 24px 30px;
+  -o-background-size: 24px 30px;
   -webkit-background-size: 24px 30px;
   background-size: 24px 30px;
   overflow: hidden;
@@ -80,6 +82,9 @@ input[type=submit].languageSelector {
   left: 0;
   border-radius: 5px 5px 5px;
   background-position: center center;
+}
+.jsEnabled #mw-mf-main-menu-button {
+  background-image: /* @embed */ url(images/menu/main.png);
 }
 #mw-mf-main-menu-button:active {
   background-color: #f9f9f9;
@@ -102,7 +107,7 @@ input[type=submit].languageSelector {
 #mw-mf-overlay .header,
 #mw-mf-header {
   z-index: 2;
-  color: white;
+  color: black;
   background-color: #f3f3f3;
   background-image: -moz-linear-gradient(top, #fafafa, #f3f3f3);
   background-image: -ms-linear-gradient(top, #fafafa, #f3f3f3);
@@ -169,10 +174,11 @@ input[type=submit].languageSelector {
   background-repeat: no-repeat;
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
   -webkit-background-size: 24px 24px;
   background-size: 24px 24px;
   background-position: 0px 9px;
-  height: 21px;
   margin-left: 10px;
   border-bottom: 1px inset #3e3e3e;
 }
@@ -185,24 +191,45 @@ input[type=submit].languageSelector {
   border-right: solid 1px black;
 }
 #mw-mf-menu-main li.icon a {
-  background-image: /* @embed */ url(images/menu/home.png);
+  background-image: url(images/menu/lowres/home.png);
 }
 #mw-mf-menu-main li.icon2 a {
-  background-image: /* @embed */ url(images/menu/random.png);
+  background-image: url(images/menu/lowres/random.png);
 }
 #mw-mf-menu-main li.icon3 a {
-  background-image: /* @embed */ url(images/menu/nearby.png);
+  background-image: url(images/menu/lowres/nearby.png);
 }
 #mw-mf-menu-main li.icon4 a {
-  background-image: /* @embed */ url(images/menu/contact.png);
+  background-image: url(images/menu/lowres/contact.png);
 }
 #mw-mf-menu-main li.icon5 a {
-  background-image: /* @embed */ url(images/menu/settings.png);
+  background-image: url(images/menu/lowres/settings.png);
 }
 #mw-mf-menu-main li.icon6 a.logout {
-  background-image: /* @embed */ url(images/menu/logout.png);
+  background-image: url(images/menu/lowres/logout.png);
 }
 #mw-mf-menu-main li.icon6 a.login {
+  background-image: url(images/menu/lowres/login.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon a {
+  background-image: /* @embed */ url(images/menu/home.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon2 a {
+  background-image: /* @embed */ url(images/menu/random.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon3 a {
+  background-image: /* @embed */ url(images/menu/nearby.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon4 a {
+  background-image: /* @embed */ url(images/menu/contact.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon5 a {
+  background-image: /* @embed */ url(images/menu/settings.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon6 a.logout {
+  background-image: /* @embed */ url(images/menu/logout.png);
+}
+.jsEnabled #mw-mf-menu-main li.icon6 a.login {
   background-image: /* @embed */ url(images/menu/login.png);
 }
 #mw-mf-menu-main li.icon-watchlist a {
@@ -296,6 +323,8 @@ html.overlay li:hover {
 
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: 98px 98px;
+  -o-background-size: 98px 98px;
   -webkit-background-size: 98px 98px;
   background-size: 98px 98px;
 }
@@ -309,6 +338,8 @@ html.overlay li:hover {
   background-position: -78px center;
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: auto 64px;
+  -o-background-size: auto 64px;
   -webkit-background-size: auto 64px;
   background-size: auto 64px;
 }
@@ -373,6 +404,8 @@ button.escapeOverlay {
   text-indent: -999px;
   /* use -webkit prefix for older android browsers eg. nexus 1 */
 
+  -moz-background-size: auto 30px;
+  -o-background-size: auto 30px;
   -webkit-background-size: auto 30px;
   background-size: auto 30px;
   z-index: 2;

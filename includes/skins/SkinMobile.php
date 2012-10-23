@@ -114,8 +114,11 @@ mediawiki.hidpi' ), 'scripts', true, true );
 		$scriptLinks[] = $this->resourceLoaderLink( array( 'mobile.site' ), 'scripts', false );
 		$bottomScripts = implode( "\n", $scriptLinks );
 		$tpl->set( 'bottomScripts', $device['supports_javascript'] ? $bottomScripts : '' );
-		$tpl->set( 'preambleScript', $device['supports_javascript'] ?
-			"document.documentElement.className += ' jsEnabled page-loading';" : '' );
+
+		$headLinks = array();
+		$headLinks[] = $this->resourceLoaderLink( array( '' => 'mobile.head' ), 'scripts' );
+		$preamble = implode( "\n", $headLinks );
+		$tpl->set( 'preambleScript', $device['supports_javascript'] ? $preamble : '' );
 
 		$tpl->set( 'stopMobileRedirectCookieName', 'stopMobileRedirect' );
 		$tpl->set( 'stopMobileRedirectCookieDuration', $context->getUseFormatCookieDuration() );
@@ -504,8 +507,8 @@ class SkinMobileTemplate extends BaseTemplate {
 				_evq.push( ev );
 				console.log( typeof JSON === 'undefined' ? ev : JSON.stringify( ev ) );
 			}
-			<?php $this->html( 'preambleScript' ) ?>
 		</script>
+		<?php $this->html( 'preambleScript' ) ?>
 		<link rel="canonical" href="<?php $this->html( 'canonicalUrl' ) ?>" >
 	</head>
 	<body class="<?php $this->text( 'bodyClasses' ) ?>">
@@ -519,24 +522,6 @@ class SkinMobileTemplate extends BaseTemplate {
 	<!--[if gt IE 7]><!-->
 		<?php $this->html( 'bcHack' ) ?>
 		<?php $this->html( 'bottomScripts' ) ?>
-	<script type='text/javascript'>
-	( function() {
-	var domLoaded;
-	if ( document.addEventListener ) {
-		document.addEventListener( 'DOMContentLoaded', function() {
-			domLoaded = true;
-			_mwLogEvent( 'DOMContentLoaded' );
-			mw.mobileFrontend.init();
-		} );
-	}
-	window.onload = function() {
-		if ( !domLoaded ) {
-			mw.mobileFrontend.init();
-		}
-	};
-
-	}() ) ;
-	</script>
 	<!--><![endif]-->
 	</body>
 	</html><?php
@@ -699,6 +684,7 @@ class SkinMobileTemplate extends BaseTemplate {
 				<img src="<?php $this->text( 'shim' ) ?>" alt="<?php
 					$this->msg( 'mobile-frontend-clear-search' ) ?>" class="clearlink" id="mw-mf-clearsearch" title="<?php
 					$this->msg( 'mobile-frontend-clear-search' ) ?>"/>
+				<input class='searchSubmit' type="submit" value="<?php $this->msg( 'mobile-frontend-search-submit' ) ?>">
 			</div>
 		</form>
 	</div>
