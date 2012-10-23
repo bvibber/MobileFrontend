@@ -139,6 +139,10 @@ $messages['en'] = array (
 	
 	'mobile-frontend-changeslist-ip' => 'IP',
 	'mobile-frontend-changeslist-nocomment' => 'no edit summary',
+	'mobile-frontend-watchlist-filter-all' => 'All',
+	'mobile-frontend-watchlist-filter-articles' => 'Articles',
+	'mobile-frontend-watchlist-filter-talk' => 'Talk',
+	'mobile-frontend-watchlist-filter-other' => 'Other',
 );
 
 /** Message documentation (Message documentation)
@@ -276,8 +280,13 @@ This buttons takes the user to a random page.',
 	'mobile-frontend-meta-data-issues' => 'This should be several words and should explain that an article has cleanup templates on it - meaning there is room for improvement on the page. It appears in a button that when clicked opens the overlay with heading {{msg-mw|mobile-frontend-meta-data-issues-header}}',
 	'mobile-frontend-ajax-page-loading' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript',
 	'mobile-frontend-ajax-page-error' => 'Text that accompanies an ajax loader when you dynamically load an article via javascript and it fails',
+
 	'mobile-frontend-changeslist-ip' => 'Label used in mobile watchlist/history/recentchanges overview for IP (non-logged-in) edits.',
 	'mobile-frontend-changeslist-nocomment' => 'Text to mark an empty edit summary in mobile watchlist/history/recentchanges overview.',
+	'mobile-frontend-watchlist-filter-all' => 'Label on filter selector for mobile watchlist: all pages',
+	'mobile-frontend-watchlist-filter-articles' => 'Label on filter selector for mobile watchlist: all pages: article pages only',
+	'mobile-frontend-watchlist-filter-talk' => 'Label on filter selector for mobile watchlist: talk pages',
+	'mobile-frontend-watchlist-filter-other' => 'Label on filter selector for mobile watchlist: other pages (not talk or article)',
 );
 
 /** Achinese (Acèh)

@@ -24,6 +24,9 @@
 	color: white;
 	background-color: #808080;
 }
+#mw-mf-watchlist .mw-mf-watchlist-selector li a {
+	color: inherit;
+}
 
 
 .mw-mf-watchlist-results {

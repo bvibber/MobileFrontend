@@ -11,6 +11,8 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			// No watchlist for you.
 			return parent::execute( $par );
 		}
+		
+		$this->filter = $this->getRequest()->getVal( 'filter', 'all' );
 
 		$output->addModules( 'mobile.watchlist' );
 
@@ -29,13 +31,34 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 	}
 
 	function showHeader() {
+		$filters = array(
+			'all' => 'mobile-frontend-watchlist-filter-all',
+			'articles' => 'mobile-frontend-watchlist-filter-articles',
+			'talk' => 'mobile-frontend-watchlist-filter-talk',
+			'other' => 'mobile-frontend-watchlist-filter-other',
+		);
 		$output = $this->getOutput();
+
 		$output->addHtml(
-			Html::openElement( 'ul', array( 'class' => 'mw-mf-watchlist-selector' ) ) .
-				Html::element( 'li', array( 'class' => 'selected' ), 'All' ) .
-				Html::element( 'li', array(), 'Articles' ) .
-				Html::element( 'li', array(), 'Talk' ) .
-				Html::element( 'li', array(), 'Other' ) .
+			Html::openElement( 'ul', array( 'class' => 'mw-mf-watchlist-selector' ) )
+		);
+
+		foreach( $filters as $filter => $msg ) {
+			$itemAttrs = array();
+			if ( $filter === $this->filter ) {
+				$itemAttrs['class'] = 'selected';
+			}
+			$linkAttrs = array(
+				'href' => $this->getTitle()->getLocalUrl( array( 'filter' => $filter ) )
+			);
+			$output->addHtml(
+				Html::openElement( 'li', $itemAttrs ) .
+				Html::element( 'a', $linkAttrs, $this->msg( $msg )->plain() ) .
+				Html::closeElement( 'li' )
+			);
+		}
+
+		$output->addHtml(
 			Html::closeElement( 'ul' )
 		);
 	}
@@ -74,6 +97,24 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			if ( $rollbacker ) {
 				$fields[] = 'page_latest';
 			}
+		}
+
+		switch( $this->filter ) {
+		case 'all':
+			// no-op
+			break;
+		case 'articles':
+			// @fixme content namespaces
+			$conds['rc_namespace'] = 0;
+			break;
+		case 'talk':
+			// @fixme associate with content namespaces? or all talks?
+			$conds['rc_namespace'] = 1;
+			break;
+		case 'other':
+			// @fixme
+			$conds['rc_namespace'] = array(2, 4);
+			break;
 		}
 
 		ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $options, '' );
