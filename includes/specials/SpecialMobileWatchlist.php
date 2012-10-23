@@ -87,12 +87,19 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 	function showResults( $res ) {
 		$this->seenTitles = array();
 
+		$this->today = $this->day( wfTimestamp() );
+		$this->seenDays = array( $this->today => true );
+
 		$output = $this->getOutput();
 		$output->addHtml( '<ul class="mw-mf-watchlist-results">' );
 		foreach( $res as $row ) {
 			$this->showResultRow( $row );
 		}
 		$output->addHtml( '</ul>' );
+	}
+
+	private function day( $ts ) {
+		return $this->getLang()->date( $ts, true );
 	}
 
 	function showResultRow( $row ) {
@@ -105,13 +112,12 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			// return;
 		}
 		$this->seenTitles[$titleText] = true;
-		
+
 		$comment = $row->rc_comment;
 		$userId = $row->rc_user;
 		$username = $row->rc_user_text;
 		$timestamp = $row->rc_timestamp;
 		$ts = new MWTimestamp( $row->rc_timestamp );
-		$relativeTime = $ts->getHumanTimestamp();
 
 		if ( $userId == 0 ) {
 			$usernameChunk = Html::element( 'span',
@@ -130,6 +136,17 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			$comment = Sanitizer::stripAllTags( $comment );
 		}
 
+		$day = $this->day( $ts );
+		if ( $day === $this->today ) {
+			$relativeTime = $ts->getHumanTimestamp();
+		} else {
+			$relativeTime = $this->getLang()->time( $ts, true );
+		}
+		if ( !isset( $this->seenDays[$day] ) ) {
+			$this->showDateRow( $ts );
+			$this->seenDays[$day] = true;
+		}
+
 		$output->addHtml(
 			'<li>' .
 			Html::element( 'div', array( 'class' => 'mw-mf-title' ), $titleText ).
@@ -139,6 +156,16 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 			Html::element( 'div', array( 'class' => 'mw-mf-comment' ), $comment ) .
 			Html::element( 'div', array( 'class' => 'mw-mf-time' ), $relativeTime ) .
 			'</li>'
+		);
+	}
+
+	function showDateRow( $ts ) {
+		$this->getOutput()->addHtml(
+			Html::element(
+				'li',
+				array( 'class' => 'date' ),
+				$this->day( $ts )
+			)
 		);
 	}
 

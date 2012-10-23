@@ -30,7 +30,17 @@
 	color: #808080;
 	padding-left: 28px;
 	padding-right: 28px;
+
+	background-image: /* @embed */url(images/drilldown.png);
+	-webkit-background-size: 20px 20px;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: right center;
 }
+.mw-mf-watchlist-results li.date {
+	background: none;
+}
+
 .mw-mf-watchlist-results li div {
 	font-size: 80%;
 
