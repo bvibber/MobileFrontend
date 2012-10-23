@@ -60,6 +60,9 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+.mw-mf-watchlist-results li .mw-mf-user {
+	width: 75%; /* shorten to make room for time */
+}
 .mw-mf-watchlist-results li .mw-mf-title {
 	color: #202020;
 	font-size: 100%;
