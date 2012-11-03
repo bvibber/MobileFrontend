@@ -47,8 +47,28 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 		}
 		$contentHandler = $this->rev->getContentHandler();
 		$de = $contentHandler->createDifferenceEngine( $this->getContext(), $prevId, $this->revId );
+		$diff = $de->getDiffBody();
+		
+		$this->getOutput()->addHtml(
+			'<div id="mw-mf-minidiff">' .
+			$this->processDiff( $diff )
+			. '</div>'
+		);
+	}
 
-		// @todo do something
+	function processDiff( $diff ) {
+		$out = '';
+
+		// haaaacccckkkkk
+		$doc = new DOMDocument();
+		$doc->loadHtml( $diff );
+		foreach( $doc->getElementsByTagName( 'del' ) as $item ) {
+			$out .= Html::element( 'del', array(), $item->textContent );
+		}
+		foreach( $doc->getElementsByTagName( 'ins' ) as $item ) {
+			$out .= Html::element( 'ins', array(), $item->textContent );
+		}
+		return $out;
 	}
 
 	function showFooter() {
