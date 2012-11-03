@@ -21,8 +21,7 @@ class SkinMobile extends SkinMobileBase {
 		$device = $context->getDevice();
 		$inBeta = $context->isBetaGroupMember();
 
-		$userLogin = $title->isSpecial( 'Userlogin' );
-		$tpl->set( 'isOverlay', ( $userLogin ) ); // quick hack
+		$tpl->set( 'isOverlay', ( $specialPage ) ); // quick hack
 		$tpl->set( 'action', $context->getRequest()->getText( 'action' ) );
 		$tpl->set( 'isBetaGroupMember', $inBeta );
 		$tpl->set( 'renderLeftMenu', $context->getForceLeftMenu() );
