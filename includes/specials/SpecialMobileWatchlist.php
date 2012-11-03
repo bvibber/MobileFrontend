@@ -159,6 +159,10 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 		$username = $row->rc_user_text;
 		$timestamp = $row->rc_timestamp;
 		$ts = new MWTimestamp( $row->rc_timestamp );
+		$revId = $row->rc_this_oldid;
+		
+		$diffTitle = Title::makeTitle( NS_SPECIAL, 'MobileDiff/' . $revId ); // @fixme this seems lame
+		$diffLink = $diffTitle->getLocalUrl();
 
 		if ( $userId == 0 ) {
 			$usernameChunk = Html::element( 'span',
@@ -190,12 +194,14 @@ class SpecialMobileWatchlist extends SpecialWatchlist {
 
 		$output->addHtml(
 			'<li>' .
+			Html::openElement( 'a', array( 'href' => $diffLink ) ) .
 			Html::element( 'div', array( 'class' => 'mw-mf-title' ), $titleText ).
 			Html::openElement( 'div', array( 'class' => 'mw-mf-user' ) ).
 				$usernameChunk .
 			Html::closeElement( 'div' ) .
 			Html::element( 'div', array( 'class' => 'mw-mf-comment' ), $comment ) .
 			Html::element( 'div', array( 'class' => 'mw-mf-time' ), $relativeTime ) .
+			Html::closeElement( 'a' ) .
 			'</li>'
 		);
 	}
