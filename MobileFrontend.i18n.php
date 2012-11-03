@@ -157,6 +157,10 @@ $messages['en'] = array (
 	'mobile-frontend-watchlist-filter-articles' => 'Articles',
 	'mobile-frontend-watchlist-filter-talk' => 'Talk',
 	'mobile-frontend-watchlist-filter-other' => 'Other',
+	
+	'mobile-frontend-diffview-title' => 'Change to $1',
+	'mobile-frontend-diffview-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
+	'mobile-frontend-diffview-anonymous' => 'Anonymous user',
 );
 
 /** Message documentation (Message documentation)
