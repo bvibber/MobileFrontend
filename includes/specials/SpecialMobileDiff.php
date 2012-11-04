@@ -42,17 +42,17 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 		$prev = $this->rev->getPrevious();
 		if ( $prev ) {
 			$prevId = $prev->getId();
+			$contentHandler = $this->rev->getContentHandler();
+			$de = $contentHandler->createDifferenceEngine( $this->getContext(), $prevId, $this->revId );
+			$diff = $de->getDiffBody();
+			$processedDiff = $this->processDiff( $diff );
 		} else {
-			$prevId = 0;
+			$processedDiff = '<ins>' . htmlspecialchars( $this->rev->getText() ) . '</ins>';
 		}
-		$contentHandler = $this->rev->getContentHandler();
-		$de = $contentHandler->createDifferenceEngine( $this->getContext(), $prevId, $this->revId );
-		$diff = $de->getDiffBody();
-		
 		$this->getOutput()->addHtml(
 			'<div id="mw-mf-minidiff">' .
-			$this->processDiff( $diff )
-			. '</div>'
+			$processedDiff .
+			'</div>'
 		);
 	}
 
