@@ -60,7 +60,7 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 				', ' .
 				Html::element( 'span', array( 'class' => 'mw-mf-diff-date' ), $ts->getHumanTimestamp() ) .
 			Html::closeElement( 'div' ) .
-			Html::element( 'div', array( 'id' => 'mf-diff-comment' ), $this->rev->getComment() )
+			Html::element( 'div', array( 'id' => 'mw-mf-diff-comment' ), $this->rev->getComment() )
 		);
 	}
 

@@ -91,6 +91,12 @@
 #mw-mf-diffview #mw-mf-diffarea {
   padding: 1em;
 }
+#mw-mf-diffview #mw-mf-diff-info {
+  padding-bottom: 1em;
+}
+#mw-mf-diffview #mw-mf-diff-comment {
+  padding-bottom: 1em;
+}
 #mw-mf-diffview #mw-mf-userinfo {
   position: absolute;
   bottom: 0;
