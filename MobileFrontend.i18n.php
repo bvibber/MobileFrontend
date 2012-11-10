@@ -161,6 +161,8 @@ $messages['en'] = array (
 	'mobile-frontend-diffview-title' => 'Change to $1',
 	'mobile-frontend-diffview-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
 	'mobile-frontend-diffview-anonymous' => 'Anonymous user',
+	'mobile-frontend-diffview-bytesadded' => '$1 {{PLURAL:$1|byte|bytes}} added',
+	'mobile-frontend-diffview-bytesremoved' => '$1 {{PLURAL:$1|byte|bytes}} removed',
 );
 
 /** Message documentation (Message documentation)

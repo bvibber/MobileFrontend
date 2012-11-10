@@ -74,3 +74,27 @@
   top: 3em;
   right: 28px;
 }
+#mw-mf-diffview .mw-mf-bytesadded {
+  color: green;
+}
+#mw-mf-diffview .mw-mf-bytesremoved {
+  color: red;
+}
+#mw-mf-diffview ins {
+  color: green;
+  text-decoration: none;
+}
+#mw-mf-diffview del {
+  color: #444;
+  text-decoration: strikethrough;
+}
+#mw-mf-diffview #mw-mf-userinfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5em;
+  padding: 1em;
+  background-color: #f0f0f0;
+  border-top: solid 1px #c0c0c0;
+}

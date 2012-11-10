@@ -13,6 +13,7 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 		// @fixme validate
 		$this->revId = intval( $par );
 		$this->rev = Revision::newFromId( $this->revId );
+		$this->prevRev = $this->rev->getPrevious();
 		$this->targetTitle = $this->rev->getTitle();
 		
 		$output->setPageTitle( $this->msg( 'mobile-frontend-diffview-title', $this->targetTitle->getPrefixedText() ) );
@@ -33,15 +34,34 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 	}
 
 	function showHeader() {
+		if ( $this->prevRev ) {
+			$bytesChanged = $this->rev->getSize() - $this->prevRev->getSize();
+		} else {
+			$bytesChanged = 0;
+		}
+		if ( $bytesChanged >= 0 ) {
+			$changeMsg = 'mobile-frontend-diffview-bytesadded';
+			$sizeClass = 'mw-mf-bytesadded';
+		} else {
+			$changeMsg = 'mobile-frontend-diffview-bytesremoved';
+			$sizeClass = 'mw-mf-bytesremoved';
+			$bytesChanged = abs( $bytesChanged );
+		}
+		
+		$ts = new MWTimestamp( $this->rev->getTimestamp() );
 		$this->getOutput()->addHtml(
+			Html::openElement( 'div', array( 'id' => 'mw-mf-diff-info' ) ) .
+				Html::element( 'span', array( 'class' => $sizeClass ), $this->msg( $changeMsg, $bytesChanged )->text() ) .
+				', ' .
+				Html::element( 'span', array( 'class' => 'mw-mf-diff-date' ), $ts->getHumanTimestamp() ) .
+			Html::closeElement( 'div' ) .
 			Html::element( 'div', array( 'id' => 'mf-diff-comment' ), $this->rev->getComment() )
 		);
 	}
 
 	function showDiff() {
-		$prev = $this->rev->getPrevious();
-		if ( $prev ) {
-			$prevId = $prev->getId();
+		if ( $this->prevRev ) {
+			$prevId = $this->prevRev->getId();
 			$contentHandler = $this->rev->getContentHandler();
 			$de = $contentHandler->createDifferenceEngine( $this->getContext(), $prevId, $this->revId );
 			$diff = $de->getDiffBody();
