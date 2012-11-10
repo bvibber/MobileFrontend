@@ -1,82 +1,76 @@
 #mw-mf-watchlist {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
-
 #mw-mf-watchlist .mw-mf-watchlist-selector {
-	text-align: center;
-	padding: 8px 0px;
-	background-color: #f0f0f0;
+  text-align: center;
+  padding: 8px 0px;
+  background-color: #f0f0f0;
 }
 #mw-mf-watchlist .mw-mf-watchlist-selector li {
-	display: inline-block;
-	border: solid 1px #444;
-	padding: 0px 8px;
-	margin: 0;
-	
-	color: #808080;
-	background-color: white;
+  display: inline-block;
+  border: solid 1px #444;
+  padding: 0px 8px;
+  margin: 0;
+  color: #808080;
+  background-color: white;
 }
 #mw-mf-watchlist .mw-mf-watchlist-selector li.selected {
-	color: white;
-	background-color: #808080;
+  color: white;
+  background-color: #808080;
 }
 #mw-mf-watchlist .mw-mf-watchlist-selector li a {
-	color: inherit;
+  color: inherit;
 }
-
-
 .mw-mf-watchlist-results {
-	background-color: white;
+  background-color: white;
 }
-
 .mw-mf-watchlist-results li {
-	list-style: none;
-	padding: 8px 0px;
-	border-top: solid 1px #c0c0c0;
-	position: relative;
-	color: #808080;
-	padding-left: 28px;
-	padding-right: 28px;
-
-	background-image: /* @embed */url(images/drilldown.png);
-	-webkit-background-size: 20px 20px;
-	background-size: 20px 20px;
-	background-repeat: no-repeat;
-	background-position: right center;
+  list-style: none;
+  padding: 8px 0px;
+  border-top: solid 1px #c0c0c0;
+  position: relative;
+  color: #808080;
+  padding-left: 28px;
+  padding-right: 28px;
+  background-image: /* @embed */ url(images/drilldown.png);
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
 }
 .mw-mf-watchlist-results li.date {
-	background: none;
-	padding-top: 0;
-	padding-bottom: 0;
-	background-color: #f0f0f0;
+  background: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: #f0f0f0;
 }
-
 .mw-mf-watchlist-results li div {
-	font-size: 80%;
-
-	white-space: nowrap;
-	-webkit-text-overflow: ellipsis;
-	text-overflow: ellipsis;
-	overflow: hidden;
+  font-size: 80%;
+  white-space: nowrap;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .mw-mf-watchlist-results li .mw-mf-user {
-	width: 75%; /* shorten to make room for time */
+  width: 75%;
+  /* shorten to make room for time */
+
+}
+.mw-mf-watchlist-results li .mw-mf-user .mw-mf-ip {
+  color: white;
+  background: red;
+  padding: 0px 6px;
 }
 .mw-mf-watchlist-results li .mw-mf-title {
-	color: #202020;
-	font-size: 100%;
+  color: #202020;
+  font-size: 100%;
 }
 .mw-mf-watchlist-results li .mw-mf-time {
-	position: absolute;
-	top: 3em;
-	right: 28px;
-}
-.mw-mf-ip {
-	color: white;
-	background: red;
-	padding: 0px 6px;
+  position: absolute;
+  top: 3em;
+  right: 28px;
 }
