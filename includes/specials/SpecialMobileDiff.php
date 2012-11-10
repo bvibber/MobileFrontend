@@ -21,11 +21,16 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 		$output->addModules( 'mobile.watchlist' );
 
 		$output->addHtml(
-			Html::openElement( 'div', array( 'id' => 'mw-mf-diffview' ) )
+			Html::openElement( 'div', array( 'id' => 'mw-mf-diffview' ) ) .
+			Html::openElement( 'div', array( 'id' => 'mw-mf-diffarea' ) )
 		);
 
 		$this->showHeader();
 		$this->showDiff();
+		$output->addHtml(
+			Html::closeElement( 'div' )
+		);
+
 		$this->showFooter();
 
 		$output->addHtml(

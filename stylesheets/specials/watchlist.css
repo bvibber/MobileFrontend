@@ -88,6 +88,9 @@
   color: #444;
   text-decoration: strikethrough;
 }
+#mw-mf-diffview #mw-mf-diffarea {
+  padding: 1em;
+}
 #mw-mf-diffview #mw-mf-userinfo {
   position: absolute;
   bottom: 0;
