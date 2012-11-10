@@ -42,7 +42,7 @@ class SpecialMobileDiff extends UnlistedSpecialPage {
 		if ( $this->prevRev ) {
 			$bytesChanged = $this->rev->getSize() - $this->prevRev->getSize();
 		} else {
-			$bytesChanged = 0;
+			$bytesChanged = $this->rev->getSize();
 		}
 		if ( $bytesChanged >= 0 ) {
 			$changeMsg = 'mobile-frontend-diffview-bytesadded';
