@@ -353,13 +353,14 @@
 
 			// Hack for FirefoxOS 1.0
 			// <input type="file"> isn't supported, so use Web Activities to pick photo
-			if (typeof window.MozActivity !== 'undefined' /*&& $('<input type="file"/>').prop('type') !== 'file'*/) {
+			if (typeof window.MozActivity !== 'undefined' && $('<input type="file"/>').prop('type') !== 'file') {
 				$input.on( 'mousedown', function(event) {
 					event.preventDefault();
 					var activity = new MozActivity({
 						name: "pick",
 						data: {
-							type: ["image/jpeg", "image/png", "image/gif"]
+							// type: ["image/jpeg", "image/png", "image/gif"]
+							type: ["image/jpeg"] // Gallery misbehaves if you request multiple types -- https://bugzilla.mozilla.org/show_bug.cgi?id=839630
 						}
 					});
 					activity.onsuccess = function(event) {
