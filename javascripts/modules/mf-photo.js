@@ -59,8 +59,30 @@
 
 		name = name.replace( String.fromCharCode( 27 ), '-' );
 		name = name.replace( /[\x7f\.\[#<>\[\]\|\{\}\/:]/g, '-' );
-		extension = file.name.slice( file.name.lastIndexOf( '.' ) + 1 );
+		if (typeof file.name === 'string' && file.name !== '') {
+			extension = file.name.slice( file.name.lastIndexOf( '.' ) + 1 );
+		} else {
+			// We got a blob without a filename.
+			extension = extensionForType(file.type);
+		}
 		return name + '.' + extension;
+	}
+	
+	function extensionForType( type ) {
+		var extensions = {
+			'image/jpeg': 'jpg',
+			'image/png': 'png',
+			'image/gif': 'gif',
+			'image/svg': 'svg',
+			'application/pdf': 'pdf'
+			// add more types
+		};
+		if ( type in extensions ) {
+			return extensions[type];
+		} else {
+			// uh-oh
+			return '';
+		}
 	}
 
 	PhotoApi = Api.extend( {
