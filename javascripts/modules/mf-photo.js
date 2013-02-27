@@ -25,7 +25,7 @@
 		var browserSupported = (
 			typeof FileReader !== 'undefined' &&
 			typeof FormData !== 'undefined' &&
-			($('<input type="file"/>').prop('type') === 'file') // Firefox OS 1.0 turns <input type="file"> into <input type="text">
+			(typeof window.MozActivity !== 'undefined' || $('<input type="file"/>').prop('type') === 'file') // Firefox OS 1.0 turns <input type="file"> into <input type="text">
 		);
 
 		return (
@@ -316,7 +316,7 @@
 
 			this.options = options;
 			this.log = getLog( options.funnel );
-
+			
 			$input.
 				// accept must be set via attr otherwise cannot use camera on Android
 				attr( 'accept', 'image/*;' ).
@@ -328,30 +328,52 @@
 					// clear so that change event is fired again when user selects the same file
 					$input.val( '' );
 
-					self.log( { action: 'preview' } );
-					preview.
-						on( 'cancel', function() {
-							self.log( { action: 'previewCancel' } );
-							nav.closeOverlay();
-						} ).
-						on( 'submit', function() {
-							self.log( { action: 'previewSubmit' } );
-							self._submit();
-						} );
-
-					// FIXME: replace if we make overlay an object (and inherit from it?)
-					nav.createOverlay( null, preview.$el );
-					// skip the URL bar if possible
-					window.scrollTo( 0, 1 );
-
-					fileReader.readAsDataURL( self.file );
-					fileReader.onload = function() {
-						var dataUrl = fileReader.result;
-						// add mimetype if not present (some browsers need it, e.g. Android browser)
-						dataUrl = dataUrl.replace( /^data:base64/, 'data:image/jpeg;base64' );
-						preview.setImageUrl( dataUrl );
-					};
+					self._handleFile();
 				} );
+
+			// Hack for FirefoxOS 1.0
+			// <input type="file"> isn't supported, so use Web Activities to pick photo
+			if (typeof window.MozActivity !== 'undefined' && $('<input type="file"/>').prop('type') !== 'file') {
+				$input.on( 'click', function(event) {
+					event.preventDefault();
+					var activity = new MozActivity({
+						name: "pick"
+					});
+					a.onsuccess = function(data) {
+						console.log('got from picker?');
+						console.log(data);
+					}
+				});
+			}
+		},
+
+		/**
+		 * Triggered when a file has been selected to upload
+		 */
+		_handleFile: function() {
+			self.log( { action: 'preview' } );
+			preview.
+				on( 'cancel', function() {
+					self.log( { action: 'previewCancel' } );
+					nav.closeOverlay();
+				} ).
+				on( 'submit', function() {
+					self.log( { action: 'previewSubmit' } );
+					self._submit();
+				} );
+
+			// FIXME: replace if we make overlay an object (and inherit from it?)
+			nav.createOverlay( null, preview.$el );
+			// skip the URL bar if possible
+			window.scrollTo( 0, 1 );
+
+			fileReader.readAsDataURL( self.file );
+			fileReader.onload = function() {
+				var dataUrl = fileReader.result;
+				// add mimetype if not present (some browsers need it, e.g. Android browser)
+				dataUrl = dataUrl.replace( /^data:base64/, 'data:image/jpeg;base64' );
+				preview.setImageUrl( dataUrl );
+			};
 		},
 
 		_submit: function() {
