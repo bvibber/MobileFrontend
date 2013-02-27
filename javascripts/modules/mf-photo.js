@@ -321,10 +321,8 @@
 				// accept must be set via attr otherwise cannot use camera on Android
 				attr( 'accept', 'image/*;' ).
 				on( 'change', function() {
-					var preview = self.preview = new PhotoUploaderPreview(),
-						fileReader = new FileReader();
-
 					self.file = $input[0].files[0];
+
 					// clear so that change event is fired again when user selects the same file
 					$input.val( '' );
 
@@ -333,15 +331,18 @@
 
 			// Hack for FirefoxOS 1.0
 			// <input type="file"> isn't supported, so use Web Activities to pick photo
-			if (typeof window.MozActivity !== 'undefined' && $('<input type="file"/>').prop('type') !== 'file') {
-				$input.on( 'click', function(event) {
+			if (typeof window.MozActivity !== 'undefined' /*&& $('<input type="file"/>').prop('type') !== 'file'*/) {
+				$input.on( 'mousedown', function(event) {
 					event.preventDefault();
 					var activity = new MozActivity({
-						name: "pick"
+						name: "pick",
+						data: {
+							type: ["image/jpeg", "image/png", "image/gif"]
+						}
 					});
-					a.onsuccess = function(data) {
-						console.log('got from picker?');
-						console.log(data);
+					activity.onsuccess = function(event) {
+						self.file = this.result.blob;
+						self._handleFile();
 					}
 				});
 			}
@@ -351,6 +352,10 @@
 		 * Triggered when a file has been selected to upload
 		 */
 		_handleFile: function() {
+			var self = this;
+			var preview = self.preview = new PhotoUploaderPreview(),
+				fileReader = new FileReader();
+
 			self.log( { action: 'preview' } );
 			preview.
 				on( 'cancel', function() {
